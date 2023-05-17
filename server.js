@@ -1,10 +1,23 @@
-const express = require('express')
+import express from 'express'
+import mongoose from 'mongoose'
+import { Room } from './models/roomModel.js'
+import indexRouter from './routes/index.js'
+import rooms from './routes/room.js'
 const app = express()
 
-app.get('/', (req, res) => {
-  res.send('hello')
-})
+app.use(express.json())
 
-app.listen(3000, () => {
-  console.log('監聽3000');
+app.use('/', indexRouter)
+app.use('/rooms', rooms)
+
+
+mongoose.
+connect('mongodb://localhost:27017/nodeAPI')
+.then(() => {
+  app.listen(3000, () => {
+    console.log('監聽3000');
+  })
+  console.log('connect mongodb');
+}).catch(()=>{
+  console.log('connect fail');
 })
