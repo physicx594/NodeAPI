@@ -8,9 +8,19 @@ const roomSchema = mongoose.Schema(
     },
     quantity: {
       type: Number,
-      // required: [true, 'why no quantity'],
+      default: 1
     },
-    price: Number,
+    price: {
+      type: Number,
+      required: true
+    },
+    rating: {
+      type: Number,
+    },
+    payment: {
+      type: Array,
+      required: true
+    }
   },
   {
     timestamps: true

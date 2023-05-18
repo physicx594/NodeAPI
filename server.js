@@ -1,6 +1,5 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import { Room } from './models/roomModel.js'
 import indexRouter from './routes/index.js'
 import rooms from './routes/room.js'
 const app = express()
